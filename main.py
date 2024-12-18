@@ -99,26 +99,29 @@ class Task:
 
 def main():
     load_last_id()
-    user_input = input()
+    user_input = input().lower()
     prompt = Task(user_input)
-    if "add" in user_input.lower():
+    if "add" in user_input:
         prompt.add(find_the_task(user_input))
         save_current_id()
         main()
-    elif "update" in user_input.lower():
+    elif "update" in user_input:
         prompt.update("task", find_id(user_input), find_the_task(user_input))
         main()
-    elif "delete" in user_input.lower():
+    elif "delete" in user_input:
         prompt.delete(find_id(user_input))
         main()
-    elif "list" in user_input.lower():
+    elif "list" in user_input:
         prompt.list()
         main()
-    elif "mark" in user_input.lower():
+    elif "mark" in user_input:
         prompt.mark(user_input)
         main()
+    elif "exit" in user_input:
+        return
     else:
         print(f"Invalid command entered !! Try again .....")
         main()
 
+print("\n======= add / list / delete / update / mark / exit ======= ")
 main()
