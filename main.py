@@ -91,11 +91,16 @@ class Task:
             for i in data:
                 file.writelines(i)
 
-    def list(self):
+    def list(self,arg=None):
         with open("dat.txt", "r+") as file:
             data = file.readlines()
             for i in data:
-                print((((i.split(","))[1]).split(":"))[1])
+                if(arg==None):
+                    print((((i.split(","))[1]).split(":"))[1])
+                elif(arg==((((i.split(","))[2]).split(":"))[1]).strip()):
+                    print((((i.split(","))[1]).split(":"))[1])
+                else:
+                    continue
 
 def main():
     load_last_id()
